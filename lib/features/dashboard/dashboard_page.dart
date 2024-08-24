@@ -43,38 +43,44 @@ class _DashboardPageState extends State<DashboardPage> {
             _showConfirmExitDialog(
               onConfirm: () async {
                 await CustomNavigation.pop();
+                // Navigator.of(context).o
                 // _showOnPopConfirmExitDialog = true;
               },
             );
           }
         }
       },
-      child: Column(
-        children: [
-          ElevatedButton(
-              onPressed: () {
-                // Navigator().pages;
-                Navigator.of(context).push(
-                    // context,
-                    MaterialPageRoute(
-                  builder: (context) => ButtonBarPage(),
-                ));
-              },
-              child: Text("Button Bar Page")),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("show on exit confirm dialog? : "
-                  "(${_showOnPopConfirmExitDialog ? "show" : "skip"})"),
-              Switch(
-                value: _showOnPopConfirmExitDialog,
-                onChanged: (value) => setState(() {
-                  _showOnPopConfirmExitDialog = value;
-                }),
-              )
-            ],
-          )
-        ],
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Dashboard"),
+        ),
+        body: Column(
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  // Navigator().pages;
+                  Navigator.of(context).push(
+                      // context,
+                      MaterialPageRoute(
+                    builder: (context) => ButtonBarPage(),
+                  ));
+                },
+                child: Text("Button Bar Page")),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("show on exit confirm dialog? : "
+                    "(${_showOnPopConfirmExitDialog ? "show" : "skip"})"),
+                Switch(
+                  value: _showOnPopConfirmExitDialog,
+                  onChanged: (value) => setState(() {
+                    _showOnPopConfirmExitDialog = value;
+                  }),
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
